@@ -1,12 +1,16 @@
 package Controller;
 
+import JasperControllers.ApplicationJasperController;
 import Model.Order;
 import Service.OrderService;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -61,4 +65,23 @@ public class OrderController {
         serv.deleteAllOrders();
         return "All order records deleted.";
     }
+
+    @GetMapping(value="/generateJasper")
+    public ResponseEntity<byte[]> generateJasper() throws IOException, JRException {
+
+        logger.info("Generation Jasper Report");
+        ApplicationJasperController appController = new ApplicationJasperController();
+
+        byte[] bytes = new byte[0];
+        bytes = appController.createPdfReport();
+        logger.info("Jasper Report generated successfully");
+
+        return ResponseEntity
+                .ok()
+                .header("Content-Type", "application/pdf; charset=UTF-8")
+                .header("Content-Disposition", "inline; filename=\"" + "test" + ".pdf\"")
+                .body(bytes);
+
+    }
+
 }
