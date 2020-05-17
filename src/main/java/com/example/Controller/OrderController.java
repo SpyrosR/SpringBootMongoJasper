@@ -1,8 +1,8 @@
-package Controller;
+package com.example.Controller;
 
-import JasperControllers.ApplicationJasperController;
-import Model.Order;
-import Service.OrderService;
+import com.example.JasperControllers.ApplicationJasperController;
+import com.example.Model.Order;
+import com.example.Service.OrderService;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

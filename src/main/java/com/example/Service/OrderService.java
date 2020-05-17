@@ -1,6 +1,6 @@
-package Service;
+package com.example.Service;
 
-import Model.Order;
+import com.example.Model.Order;
 
 import java.util.Collection;
 import java.util.List;

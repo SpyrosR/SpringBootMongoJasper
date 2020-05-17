@@ -1,4 +1,4 @@
-package JasperControllers;
+package com.example.JasperControllers;
 
 import net.sf.jasperreports.engine.*;
 import org.slf4j.ILoggerFactory;
